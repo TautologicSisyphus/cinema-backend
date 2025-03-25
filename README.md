@@ -13,3 +13,4 @@
 * Telas a projetar: Tela principal, Seleção de Sessões, Sessão, Criar sessão, Escolher assento, Listagem de compras, Logar compra, Compra.
 
 * Link para prototipo de telas: https://www.figma.com/design/Elwt2etAqmMUsRbrI6y5pY/Untitled?node-id=0-1&t=ihkcO4nr1MCLF4Ca-1
+* https://www.figma.com/design/RjJSUmCbeJaahM1dogeAt9/CineManager?node-id=0-1&p=f&t=rAGrQ581d4eVqyY4-0
