@@ -11,3 +11,5 @@
 * Casos de uso: Programação e edição de Sessões (CRUD) Monitoramento e catalogo de compras (CRUD).
 
 * Telas a projetar: Tela principal, Seleção de Sessões, Sessão, Criar sessão, Escolher assento, Listagem de compras, Logar compra, Compra.
+
+* Link para prototipo de telas: https://www.figma.com/design/Elwt2etAqmMUsRbrI6y5pY/Untitled?node-id=0-1&t=ihkcO4nr1MCLF4Ca-1
