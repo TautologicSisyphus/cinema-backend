@@ -17,10 +17,10 @@
   2 - https://www.figma.com/design/RjJSUmCbeJaahM1dogeAt9/CineManager?node-id=0-1&p=f&t=rAGrQ581d4eVqyY4-0
 
 * Matriz Crud:
-  https://github.com/TautologicSisyphus/cinema-backend/blob/main/CRUD.png
+  ![matriz crud](https://github.com/TautologicSisyphus/cinema-backend/blob/main/CRUD.png)
   
 * Matriz Perfil x Funcionalidade:
-  https://github.com/TautologicSisyphus/cinema-backend/blob/main/Perfilxfunc.png
+  ![matriz perf x func](https://github.com/TautologicSisyphus/cinema-backend/blob/main/Perfilxfunc.png)
 
 * Priorização de requisitos: (de mais a menos prioritário)
   Agendar Sessão, Listar e ler sessão, Registrar compra, Escolher assento,           Cadastrar cliente, Aplicar desconto, Cancelar Sessão, Listar compras, Modificar    compra, Cancelar compra, Listar clientes, Modificar compra, Deletar compra. 
