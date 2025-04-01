@@ -17,11 +17,11 @@
   2 - https://www.figma.com/design/RjJSUmCbeJaahM1dogeAt9/CineManager?node-id=0-1&p=f&t=rAGrQ581d4eVqyY4-0
 
 * Matriz Crud:
-* 
+ 
   ![matriz crud](https://github.com/TautologicSisyphus/cinema-backend/blob/main/CRUD.png)
   
 * Matriz Perfil x Funcionalidade:
-* 
+ 
   ![matriz perf x func](https://github.com/TautologicSisyphus/cinema-backend/blob/main/Perfilxfunc.png)
 
 * Priorização de requisitos: (de mais a menos prioritário)
