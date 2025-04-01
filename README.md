@@ -6,7 +6,7 @@
 
 * Processo de Negócio principal: Os empregados usam a plataforma com o objetivo de catalogar sessões novas de acordo com a programação do dia, assim, quando um ingresso é comprado, o trabalhador poderia consultar as sessões existentes e quais acentos estão ocupados para selecionar os assentos do novo ingresso. O sistema também seria acessado para registrar compras de alimentos e usado para consultar as compras existentes no caso de reembolso ou análise dos dados.
 
-* Entidades: Sessão (Sessão de um filme com informaçãoes de horário, filme, e assentos), Compra (ou um ingresso ou compra de alimentos no local), Cliente (cadastro de um cliente "membro" do cinema).
+* Entidades: Sessão (Sessão de um filme com informaçãoes de horário, filme, e assentos): Davi, Compra (ou um ingresso ou compra de alimentos no local): Beatriz, Cliente (cadastro de um cliente "membro" do cinema): Milena.
 
 * Casos de uso: Programação e edição de Sessões (CRUD) Monitoramento e catalogo de compras (CRUD) Criação e Manutenção de Cliente (CRUD).
 
@@ -15,3 +15,8 @@
 * Link para prototipo de telas:                                                                                                                        
   1 - https://www.figma.com/design/Elwt2etAqmMUsRbrI6y5pY/Untitled?node-id=0-1&t=ihkcO4nr1MCLF4Ca-1                                                                                                                
   2 - https://www.figma.com/design/RjJSUmCbeJaahM1dogeAt9/CineManager?node-id=0-1&p=f&t=rAGrQ581d4eVqyY4-0
+
+* Matriz Crud:
+* Matriz Perfil x Funcionalidade:
+* Priorização de requisitos:
+  
