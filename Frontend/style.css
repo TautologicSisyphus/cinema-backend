@@ -1,0 +1,27 @@
+body{
+    background-color: #3E0505;
+}
+
+.img-fluid{
+    width: 250px;
+}
+
+.navbar{
+ background-color: #270707;
+}
+
+.nav-link{
+    color: #C0C0C0
+}
+.navbar-toggler{
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    font-size: 40px;
+    color: #C0C0C0;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+  }
