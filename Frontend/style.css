@@ -4,6 +4,7 @@ body{
 
 .img-fluid{
     width: 250px;
+    height: auto;
 }
 
 .navbar{
@@ -11,8 +12,36 @@ body{
 }
 
 .nav-link{
-    color: #C0C0C0
+    color: #C0C0C0;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
+
+.nav-link:hover,
+.dropdown-toggle:hover {
+    color: #ffffff;
+}
+
+.dropdown-menu {
+    background-color: #270707;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    color: #C0C0C0;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #570707;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
 .navbar-toggler{
     border: none;
     background: transparent;
