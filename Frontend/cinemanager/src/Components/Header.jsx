@@ -1,4 +1,5 @@
 import logo from "../assets/logoCineManager.png"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 
 function Header() {
@@ -10,30 +11,53 @@ function Header() {
                 <div className="max-w-screen-xl mx-auto flex justify-between items-center text-[#C0C0C0]">
                     
                     {/* Logo do CineManager */}
-                    <a href="#">
+                    <Link to="/">
                         <img src={logo} alt="CineManager" className="w-52 hover:scale-105 transition-all" />
-                    </a>
+                    </Link>
+                    
 
                     {/* Navegação */}
                     <div className="flex items-center gap-8">
                         {/* Menu em telas grandes */}
                         <ul className="hidden xl:flex items-center gap-12 font-semibold text-base">
-                            <li className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                                Sessões
+                            <li>
+                                <Link 
+                                  to="/sessions"
+                                  className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                                    Sessões
+                                </Link>
                             </li>
-                            <li className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                                Alimentos
+                            <li>
+                                <Link 
+                                  to="/aliments"
+                                  className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                                    Alimentos
+                                </Link>
                             </li>
-                            <li className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                                Área do Cliente
+                            <li>
+                                <Link 
+                                  to="/clients"
+                                  className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                                    Área do Cliente
+                                </Link>
+                            </li>
+                            <li>
+                                <Link 
+                                  to="/funcs"
+                                  className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                                    Funcionários
+                                </Link>
                             </li>
                         </ul>
 
                         {/* Botão Registrar-se */}
-                        <button 
-                        className="ml-6 px-5 py-2 bg-red-950 hover:bg-red-900 text-[#C0C0C0] font-semibold rounded-lg transition-all cursor-pointer">
-                            Registrar-se
-                        </button>
+                        <Link to="/register">
+                            <button 
+                            className="ml-6 px-5 py-2 bg-red-950 hover:bg-red-900 text-[#C0C0C0]
+                            hover:text-white font-semibold rounded-lg transition-all cursor-pointer">
+                                Registrar-se
+                            </button>
+                        </Link>
 
                         {/* Ícone menu hamburguer: só aparece em telas menores */}
                         <button
@@ -48,13 +72,22 @@ function Header() {
                 {/* Menu mobile */}
                 <div
                     className={`xl:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-                        isMenuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+                        isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                     }`}
                 >
                     <ul className="flex flex-col items-center gap-4 font-semibold text-lg bg-[#270707] pt-4 pb-6">
-                        <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">Sessões</li>
-                        <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">Alimentos</li>
-                        <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">Área do Cliente</li>
+                        <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                            <Link to="/sessions">Sessões</Link>
+                        </li>
+                        <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                            <Link to="/food-drinks">Alimentos</Link>
+                        </li>
+                        <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                            <Link to="/clients">Área do Cliente</Link>
+                        </li>
+                        <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                            <Link to="/funcs">Funcionários</Link>
+                        </li>
                     </ul>
                 </div>
             </header>
