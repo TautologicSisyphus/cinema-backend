@@ -22,7 +22,7 @@ function Header() {
                         <ul className="hidden xl:flex items-center gap-12 font-semibold text-base">
                             <li>
                                 <Link 
-                                  to="/sessions"
+                                  to="/sessoes"
                                   className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
                                     Sessões
                                 </Link>
@@ -77,7 +77,7 @@ function Header() {
                 >
                     <ul className="flex flex-col items-center gap-4 font-semibold text-lg bg-[#270707] pt-4 pb-6">
                         <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                            <Link to="/sessions">Sessões</Link>
+                            <Link to="/sessoes">Sessões</Link>
                         </li>
                         <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
                             <Link to="/food-drinks">Alimentos</Link>
