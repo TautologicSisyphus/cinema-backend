@@ -29,7 +29,7 @@ function Header() {
                             </li>
                             <li>
                                 <Link 
-                                  to="/aliments"
+                                  to="/Produtos"
                                   className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
                                     Alimentos
                                 </Link>
@@ -80,7 +80,7 @@ function Header() {
                             <Link to="/sessoes">Sessões</Link>
                         </li>
                         <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                            <Link to="/food-drinks">Alimentos</Link>
+                            <Link to="/Produtos">Alimentos</Link>
                         </li>
                         <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
                             <Link to="/clients">Área do Cliente</Link>
