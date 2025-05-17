@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCard from '../Components/Product';
 import { Link } from "react-router-dom";
-//import { useState } from "react";
 import logo from "../assets/logoCineManager.png"
 
 const products = [
@@ -9,23 +8,27 @@ const products = [
     id: 1,
     name: 'Pipoca Grande',
     description: 'Pipoca grande, perfeita para dividir.',
-    price: 15.99,
-    image: 'https://via.placeholder.com/150',
+    price: 19.99,
+    image: "https://images.pexels.com/photos/5112444/pexels-photo-5112444.jpeg",
+    //Créditos: https://www.pexels.com/photo/close-up-shot-of-a-bucket-of-popcorn-5112444/
   },
   {
     id: 2,
     name: 'Refrigerante 500ml',
     description: 'Refrigerante gelado para acompanhar seu filme.',
     price: 8.49,
-    image: 'https://via.placeholder.com/150',
+    image: 'https://images.pexels.com/photos/5332073/pexels-photo-5332073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    //Créditos: https://www.pexels.com/photo/cup-of-cola-beside-a-bag-of-popcorn-5332073/
   },
   {
     id: 3,
     name: 'Combo Nachos',
     description: 'Nachos crocantes com molho especial.',
-    price: 20.99,
-    image: 'https://via.placeholder.com/150',
+    price: 9.99,
+    image: 'https://images.pexels.com/photos/4960237/pexels-photo-4960237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    // Créditos: https://www.pexels.com/photo/a-person-holding-a-bag-of-chips-4960237/
   },
+  // Adicione mais produtos conforme necessário
 ];
 
 const Produtos = () => {
@@ -37,7 +40,7 @@ const Produtos = () => {
                 </Link>
             </div>
             <div className="container mx-auto p-4">
-                <h1 className="text-2xl font-bold mb-4">Lista de Produtos</h1>
+                <h1 className="text-2xl font-bold text-[#C0C0C0] mb-4">Lista de Produtos</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
