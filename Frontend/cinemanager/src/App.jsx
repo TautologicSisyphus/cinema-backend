@@ -4,6 +4,7 @@ import Register from "./Pages/Register"
 import Sessoes from "./Pages/Sessoes"
 import "./App.css"
 import Produtos from "./Pages/Produtos"
+import ClientCadastro from "./Pages/ClienteCadastro"
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/register" element={ <Register/> }></Route>
         <Route path="/sessoes" element={ <Sessoes/> }></Route>
         <Route path="/Produtos" element={ <Produtos/> }></Route>
+        <Route path="/cliente-cadastro" element={ <ClientCadastro/> }></Route>
       </Routes>
     </>
   )

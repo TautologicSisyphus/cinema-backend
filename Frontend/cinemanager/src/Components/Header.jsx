@@ -4,6 +4,9 @@ import { useState } from "react"
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isFuncionarioOpen, setIsFuncionarioOpen] = useState(false);
+    const [isClienteOpen, setIsClienteOpen] = useState(false);
+
 
     return (
         <div className="w-full absolute z-50">
@@ -19,7 +22,7 @@ function Header() {
                     {/* Navegação */}
                     <div className="flex items-center gap-8">
                         {/* Menu em telas grandes */}
-                        <ul className="hidden xl:flex items-center gap-12 font-semibold text-base">
+                        <ul className="hidden xl:flex items-center gap-12 font-semibold text-base relative">
                             <li>
                                 <Link 
                                   to="/sessoes"
@@ -34,20 +37,62 @@ function Header() {
                                     Alimentos
                                 </Link>
                             </li>
-                            <li>
-                                <Link 
-                                  to="/clients"
-                                  className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
+                            <li className="relative">
+                                <button
+                                    onClick={() => setIsClienteOpen(prev => !prev)}
+                                    className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer flex items-center gap-1"
+                                >
                                     Área do Cliente
-                                </Link>
+                                    <i className={`bx bx-chevron-down transition-transform ${isClienteOpen ? "rotate-180" : ""}`}></i>
+                                </button>
+
+                                {isClienteOpen && (
+                                    <ul className="absolute top-full left-0 mt-2 bg-[#3e1e1e] rounded-md shadow-md w-56 z-40">
+                                        <li>
+                                            <Link to="/cliente-cadastro" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a] hover:text-black">
+                                            Cadastrar novo cliente
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/cliente-lista" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a]
+                                            hover:text-black">
+                                            Lista de clientes
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/cliente-compras" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a]
+                                            hover:text-black">
+                                            Atendimento ao cliente
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                )}
                             </li>
-                            <li>
-                                <Link 
-                                  to="/funcs"
-                                  className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                                    Funcionários
-                                </Link>
-                            </li>
+                                <li className="relative">
+                                    <button
+                                        onClick={() => setIsFuncionarioOpen(prev => !prev)}
+                                        className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer flex items-center gap-1"
+                                    >
+                                        Funcionários
+                                        <i className={`bx bx-chevron-down transition-transform ${isFuncionarioOpen ? "rotate-180" : ""}`}></i>
+                                    </button>
+
+                                    {isFuncionarioOpen && (
+                                        <ul className="absolute top-full left-0 mt-2 bg-[#3e1e1e] rounded-md shadow-md w-56 z-40">
+                                            <li>
+                                                <Link to="/funcs-cadastro" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a]hover:text-black">
+                                                Cadastrar novo funcionário
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/funcs-lista" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a]
+                                                hover:text-black">
+                                                Lista de funcionários
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    )}
+                                    </li>
                         </ul>
 
                         {/* Botão Registrar-se */}
