@@ -31,7 +31,7 @@ const products = [
   // Adicione mais produtos conforme necessário
 ];
 
-const Produtos = () => {
+const ProdutosAlim = () => {
     return (
         <div className="min-h-screen flex flex-col items-center pt-40">
             <div className="flex justify-center mb-12">
@@ -52,4 +52,4 @@ const Produtos = () => {
 };
 
 
-export default Produtos;
+export default ProdutosAlim;
