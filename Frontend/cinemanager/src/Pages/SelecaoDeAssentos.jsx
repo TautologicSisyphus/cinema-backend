@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/logoCineManager.png"
 
 const SelecaoDeAssentos = ({ sessao = { nome: 'FILME' } }) => {
   const [assentosSelecionados, setAssentosSelecionados] = useState([]);
@@ -52,15 +54,16 @@ const SelecaoDeAssentos = ({ sessao = { nome: 'FILME' } }) => {
           </div>
         ))}
       </div>
-
-      <button
-        className="mt-6 px-4 py-2 bg-blue-600 text-white rounded"
-        onClick={() =>
-          alert(`Assentos selecionados: ${assentosSelecionados.join(", ")}`)
-        }
-      >
-        Confirmar Seleção
-      </button>
+      <Link to={'/ingressos'}> 
+        <button
+          className="mt-6 px-4 py-2 bg-blue-600 text-white rounded"
+          onClick={() =>
+            alert(`Assentos selecionados: ${assentosSelecionados.join(", ")}`)
+          }
+        >
+          Confirmar Seleção
+        </button>
+      </Link>
     </div>
   );
 };

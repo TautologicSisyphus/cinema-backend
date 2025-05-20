@@ -6,6 +6,7 @@ import "./App.css"
 import ProdutosAlim from "./Pages/Alimentos"
 import ClientCadastro from "./Pages/ClienteCadastro"
 import SelecaoDeAssentos from "./Pages/SelecaoDeAssentos"
+import Ingressos from "./Pages/Ingressos"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/alimentos" element={ <ProdutosAlim/> }></Route>
         <Route path="/cliente-cadastro" element={ <ClientCadastro/> }></Route>
         <Route path="/selecao-assentos" element={ <SelecaoDeAssentos/> }></Route>
+        <Route path="/ingressos" element={ <Ingressos/> }></Route>
       </Routes>
     </>
   )
