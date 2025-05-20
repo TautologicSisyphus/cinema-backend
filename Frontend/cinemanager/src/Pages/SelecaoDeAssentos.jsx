@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SelecaoDeAssentos = ({ sessao }) => {
+const SelecaoDeAssentos = ({ sessao = { nome: 'FILME' } }) => {
   const [assentosSelecionados, setAssentosSelecionados] = useState([]);
 
   const linhas = ["A", "B", "C", "D", "E", "F"];
@@ -20,8 +20,9 @@ const SelecaoDeAssentos = ({ sessao }) => {
 
   return (
     <div className="max-w-2xl mx-auto text-center">
-      <h2 className="text-xl font-bold mb-6">
-        Escolha seus assentos para <span className="italic">{sessao.nome}</span>
+      <h2 className="text-xl font-bold mb-6 text-[#C0C0C0]">
+        {/*Escolha seus assentos para o filme <span className="italic">{sessao.nome}</span>*/}
+        Escolha seus assentos para o filme
       </h2>
       <div className="space-y-3">
         {linhas.map((linha) => (

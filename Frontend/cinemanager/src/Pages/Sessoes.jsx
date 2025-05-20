@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/logoCineManager.png"
+import SelecaoDeAssentos from "./SelecaoDeAssentos";
 
 function Sessoes() {
     const [sessaoSelecionada, setSessaoSelecionada] = useState(false);
@@ -37,7 +38,19 @@ function Sessoes() {
                         ? "bg-blue-500 text-white"
                         : "bg-white hover:bg-gray-100"
                     }`}
-                >
+                    
+                >   
+                    <Link to={'/selecao-assentos'} state={{ 
+                                                        sessao: {
+                                                        nome: sessaoSelecionada.nome,
+                                                        id: sessaoSelecionada.id,
+                                                        horario: sessaoSelecionada.horario
+                                                        }
+                                                    }}>
+                        <button className="bg-[#800F0F] hover:bg-red-800 text-white hover:text-black font-semibold py-1 px-4 rounded-xl mr-2 cursor-pointer">
+                        Comprar Ingresso
+                        </button>
+                    </Link>
                     <div className="font-semibold">{sessao.nome}</div>
                     <div className="text-sm text-gray-600">{sessao.horario}</div>
                 </li>
