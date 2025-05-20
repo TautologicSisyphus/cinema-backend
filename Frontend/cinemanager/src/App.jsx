@@ -5,6 +5,7 @@ import Sessoes from "./Pages/Sessoes"
 import "./App.css"
 import ProdutosAlim from "./Pages/Alimentos"
 import ClientCadastro from "./Pages/ClienteCadastro"
+import TelaCompraIngressos from "./Pages/Ingressos"
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={ <Home/> }></Route>
         <Route path="/register" element={ <Register/> }></Route>
         <Route path="/sessoes" element={ <Sessoes/> }></Route>
+        <Route path="/ingressos" element={ <TelaCompraIngressos/> }></Route>
         <Route path="/alimentos" element={ <ProdutosAlim/> }></Route>
         <Route path="/cliente-cadastro" element={ <ClientCadastro/> }></Route>
       </Routes>
