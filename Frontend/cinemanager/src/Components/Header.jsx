@@ -6,6 +6,7 @@ function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isFuncionarioOpen, setIsFuncionarioOpen] = useState(false);
     const [isClienteOpen, setIsClienteOpen] = useState(false);
+    const [isProdutoOpen, setIsProdutoOpen] = useState(false);
 
 
     return (
@@ -30,12 +31,30 @@ function Header() {
                                     Sessões
                                 </Link>
                             </li>
-                            <li>
-                                <Link 
-                                  to="/Produtos"
-                                  className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                                    Alimentos
-                                </Link>
+                            <li className="relative">
+                                <button
+                                    onClick={() => setIsProdutoOpen(prev => !prev)}
+                                    className="p-3 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer flex items-center gap-1"
+                                >
+                                    Produtos
+                                    <i className={`bx bx-chevron-down transition-transform ${isProdutoOpen ? "rotate-180" : ""}`}></i>
+                                </button>
+
+                                {isProdutoOpen && (
+                                    <ul className="absolute top-full left-0 mt-2 bg-[#3e1e1e] rounded-md shadow-md w-56 z-40">
+                                        <li>
+                                            <Link to="/ingressos" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a] hover:text-black">
+                                            Ingressos
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/alimentos" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a]
+                                            hover:text-black">
+                                            Alimentos
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                )}
                             </li>
                             <li className="relative">
                                 <button
