@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../assets/logoCineManager.png"
+import { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 
-const SelecaoDeAssentos = ({ sessao = { nome: 'FILME' } }) => {
+const SelecaoDeAssentos = () => {
+
+  const location = useLocation();
+  const { sessao } = location.state || { sessao: { nome: 'FILME' } };
+
   const [assentosSelecionados, setAssentosSelecionados] = useState([]);
 
   const linhas = ["A", "B", "C", "D", "E", "F"];
@@ -21,10 +24,9 @@ const SelecaoDeAssentos = ({ sessao = { nome: 'FILME' } }) => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto text-center">
+    <div className="max-w-2xl mx-auto text-center items-center mt-50">
       <h2 className="text-xl font-bold mb-6 text-[#C0C0C0]">
-        {/*Escolha seus assentos para o filme <span className="italic">{sessao.nome}</span>*/}
-        Escolha seus assentos para o filme
+        Escolha seus assentos para <span className="italic">{sessao.nome}</span>
       </h2>
       <div className="space-y-3">
         {linhas.map((linha) => (
@@ -54,12 +56,13 @@ const SelecaoDeAssentos = ({ sessao = { nome: 'FILME' } }) => {
           </div>
         ))}
       </div>
-      <Link to={'/ingressos'}> 
+      <Link 
+        to="/compra-ingressos"
+        state={{ quantidade: assentosSelecionados.length, assentos: assentosSelecionados }}
+      >
         <button
-          className="mt-6 px-4 py-2 bg-blue-600 text-white rounded"
-          onClick={() =>
-            alert(`Assentos selecionados: ${assentosSelecionados.join(", ")}`)
-          }
+          className="mt-6 px-4 py-2 bg-[#270707] hover:bg-red-800 font-semibold text-[#C0C0C0] hover:text-black rounded-lg cursor-pointer" 
+          disabled={assentosSelecionados.length === 0}
         >
           Confirmar Seleção
         </button>

@@ -6,6 +6,7 @@ import "./App.css"
 import ProdutosAlim from "./Pages/Alimentos"
 import ClientCadastro from "./Pages/ClienteCadastro"
 import SelecaoDeAssentos from "./Pages/SelecaoDeAssentos"
+import CompraIngressos from "./Pages/CompraIngressos"
 import Ingressos from "./Pages/Ingressos"
 
 function App() {
@@ -17,9 +18,10 @@ function App() {
         <Route path="/register" element={ <Register/> }></Route>
         <Route path="/sessoes" element={ <Sessoes/> }></Route>
         <Route path="/alimentos" element={ <ProdutosAlim/> }></Route>
+        <Route path="/ingressos" element={ <Ingressos/> }></Route>
         <Route path="/cliente-cadastro" element={ <ClientCadastro/> }></Route>
         <Route path="/selecao-assentos" element={ <SelecaoDeAssentos/> }></Route>
-        <Route path="/ingressos" element={ <Ingressos/> }></Route>
+        <Route path="/compra-ingressos" element={ <CompraIngressos/> }></Route>
       </Routes>
     </>
   )

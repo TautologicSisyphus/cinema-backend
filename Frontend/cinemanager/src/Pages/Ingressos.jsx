@@ -1,53 +1,95 @@
-import { useState } from "react";
+import IngressoCard from "../Components/IngressoCard";
+import { Link } from "react-router-dom";
+import logo from "../assets/logoCineManager.png";
+import { useState } from 'react';
+import AddIngressoModal from '../Components/AddIngresso';
+import EditIngressoModal from '../Components/EditIngresso';
 
-export default function TelaCompraIngressos() {
-  const [inteiras, setInteiras] = useState(0);
-  const [meias, setMeias] = useState(0);
+const Ingressos = () => {
 
-  const precoInteira = 20;
-  const precoMeia = 10;
+  const defaultIngressos = [
+  {
+    id: 1,
+    name: 'Inteira',
+    price: 23.00,
+  },
+  {
+    id: 2,
+    name: 'Meia',
+    price: 11.50,
+  },
+  {
+    id: 3,
+    name: 'Dobradinha',
+    price: 9.99,
+  },
+];
 
-  const total = inteiras * precoInteira + meias * precoMeia;
+  const [ingressos, setIngressos] = useState(defaultIngressos);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [editingIngresso, setEditingIngresso] = useState(null); 
 
-  return (
-    <div className="max-w-md mx-auto p-6 space-y-6 font-sans">
-      <h1 className="text-3xl font-bold mb-4 text-center text-[#C0C0C0]">Compra de Ingressos</h1>
+  const handleEdit = (ingresso) => {
+    setEditingIngresso(ingresso);
+  };
 
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <label className="text-lg text-[#C0C0C0]">Inteiras (R$ {precoInteira}):</label>
-          <input
-            type="number"
-            min={0}
-            value={inteiras}
-            onChange={(e) => setInteiras(parseInt(e.target.value) || 0)}
-            className="w-20 px-2 py-1 border rounded text-center text-[#C0C0C0]"
-          />
+  const handleAddNew = () => {
+    setShowAddModal(true);
+  };
+
+  const handleDelete = (id) => {
+    setIngressos(ingressos.filter(p => p.id !== id));
+  };
+
+    return (
+    <div className="min-h-screen flex flex-col items-center pt-40">
+      <div className="flex justify-center mb-12">
+        <Link to="/">
+          <img src={logo} alt="CineManager" className="w-72 hover:scale-105 transition-all" />
+        </Link>
+      </div>
+
+      <div className="max-w-lg w-full p-8 bg-[#270707] rounded-xl shadow-md">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold text-[#C0C0C0]">Lista de Ingressos Disponíveis</h1>
+          <button onClick={handleAddNew} className="bg-[#800F0F] hover:bg-red-800 hover:text-black text-white font-semibold rounded-xl px-4 py-2 cursor-pointer">
+            Adicionar Ingressos
+          </button>
         </div>
 
-        <div className="flex items-center justify-between">
-          <label className="text-lg text-[#C0C0C0]">Meias (R$ {precoMeia}):</label>
-          <input
-            type="number"
-            min={0}
-            value={meias}
-            onChange={(e) => setMeias(parseInt(e.target.value) || 0)}
-            className="w-20 px-2 py-1 border rounded text-center text-[#C0C0C0]"
-          />
-        </div>
+        {showAddModal && (
+            <AddIngressoModal
+              onAdd={(newIngresso) => setIngressos([...ingressos, newIngresso])}
+              onClose={() => setShowAddModal(false)}
+            />
+          )}
 
-        <div className="mt-4 border-t pt-4 text-lg text-[#C0C0C0]">
-          <p><strong>Total:</strong> R$ {total}</p>
-        </div>
+        {editingIngresso && (
+            <EditIngressoModal
+                ingresso={editingIngresso}
+                onUpdate={(updatedIngresso) => {
+                    setIngressos(ingressos.map(p => p.id === updatedIngresso.id ? updatedIngresso : p));
+                    setEditingIngresso(null);
+                }}
+                onClose={() => setEditingIngresso(null)}
+            />
+        )}
 
-        <button
-          disabled={total === 0}
-          className={`w-full mt-4 py-2 px-4 rounded text-white font-medium transition-colors 
-            ${total === 0 ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}`}
-        >
-          Confirmar Compra
-        </button>
+        {/* Lista de produtos */}
+        <div className="flex flex-col gap-4 items-center">
+            {ingressos.map((ingresso) => (
+                <IngressoCard 
+                key={ingresso.id} 
+                ingresso={ingresso} 
+                onEdit={handleEdit} 
+                onDelete={handleDelete} 
+                />
+            ))}
+        </div>
       </div>
     </div>
   );
-}
+};
+
+
+export default Ingressos;
