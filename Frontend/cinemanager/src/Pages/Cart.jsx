@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Header from '../Components/Header';
 import { removeItem, clearCart } from '../Components/CartSlice';
