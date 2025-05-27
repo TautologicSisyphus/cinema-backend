@@ -21,6 +21,23 @@
       "price": 30.99
     }
   ],
+  "sessoes": [
+    {
+      "id": "1",
+      "filme": "John Wick",
+      "horario": "20:00"
+    },
+    {
+      "id": "2",
+      "filme": "Ad Astra",
+      "horario": "21:00"
+    },
+    {
+      "id": "3",
+      "filme": "Gravity",
+      "horario": "20:30"
+    }    
+  ],
   "products": [
     {
       "id": "1",
