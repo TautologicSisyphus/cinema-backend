@@ -2,6 +2,11 @@ import React from 'react';
 import ProductCard from '../Components/Product';
 import { Link } from "react-router-dom";
 import logo from "../assets/logoCineManager.png"
+import Header from '../Components/Header';
+//import { useSelector } from 'react-redux';
+
+
+
 
 const products = [
   {
@@ -46,8 +51,20 @@ const ProdutosAlim = () => {
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
-            </div>
+          <Header />
         </div>
+        <div className="max-w-lg w-full p-8 bg-[#270707] rounded-xl shadow-md mb-8">
+          <h1 className="text-2xl font-bold text-[#C0C0C0] mb-4 text-center">Lista de Produtos</h1>
+        </div>
+        <div className="container mx-auto p-4">
+        
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+        </div>
+      </div>
     );
 };
 

@@ -1,6 +1,8 @@
 import logo from "../assets/logoCineManager.png"
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import CartIcon from './CartIcon';
+
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -113,7 +115,10 @@ function Header() {
                                     )}
                                     </li>
                         </ul>
-
+                        {/* Ícone do carrinho */}
+                        <Link to="/cart">
+                            <CartIcon />
+                        </Link>
                         {/* Botão Registrar-se */}
                         <Link to="/register">
                             <button 
@@ -144,7 +149,7 @@ function Header() {
                             <Link to="/sessoes">Sessões</Link>
                         </li>
                         <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
-                            <Link to="/Produtos">Alimentos</Link>
+                            <Link to="/Alimentos">Alimentos</Link>
                         </li>
                         <li className="list-none w-full text-[#C0C0C0] text-center p-4 hover:bg-[#3e1e1e] hover:text-white rounded-md transition-all cursor-pointer">
                             <Link to="/clients">Área do Cliente</Link>

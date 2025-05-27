@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/logoCineManager.png"
+import Header from '../Components/Header';
 
 function Sessoes() {
     const [sessaoSelecionada, setSessaoSelecionada] = useState(false);
@@ -17,11 +18,9 @@ function Sessoes() {
     
     return (
         <div className="min-h-screen flex flex-col items-center pt-40">
-          <div className="flex justify-center mb-12">
-                  <Link to="/">
-                      <img src={logo} alt="CineManager" className="w-72 hover:scale-105 transition-all" />
-                  </Link>
-          </div>
+          <div className="fixed top-0 left-0 w-full z-50">
+                <Header />
+            </div>
 
           <div className="max-w-lg w-full p-8 bg-[#270707] rounded-xl shadow-md"> 
             <div className="mb-10 text-center">
