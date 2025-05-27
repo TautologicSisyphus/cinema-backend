@@ -7,7 +7,6 @@ const AddProdutoModal = ({ onAdd, onClose }) => {
     e.preventDefault();
     const newProduct = {
       ...form,
-      id: Date.now(),
       price: parseFloat(form.price),
     };
     onAdd(newProduct);

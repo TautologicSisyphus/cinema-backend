@@ -1,8 +1,6 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../Components/CartSlice';
-import { Provider } from 'react-redux';
-import Alimentos from '../Pages/Alimentos';
+import { addItem } from '../Slices/CartSlice';
+import ProdAlimentos from '../Pages/ProdAlimentos';
 
 
 const ProductCard = ({ product, onEdit, onDelete }) => {

@@ -30,7 +30,7 @@ const Ingressos = () => {
 
   const getNextId = () => {
   if (ingressos.length === 0) return 1;
-  return Math.max(...ingressos.map(i => Number(i.id))) + 1;
+  return String(Math.max(...ingressos.map(i => Number(i.id))) + 1);
   };
 
   const handleAddNew = (newIngresso) => {
