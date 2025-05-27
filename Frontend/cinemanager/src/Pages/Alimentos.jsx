@@ -1,8 +1,9 @@
 import ProductCard from '../Components/Product';
-import { Link } from "react-router-dom";
-import logo from "../assets/logoCineManager.png"
 import Header from '../Components/Header';
 import React, { useState } from 'react';
+//import { useState } from 'react';
+import AddProdutoModal from '../Components/AddProduto';
+import EditProdutoModal from '../Components/EditProduto';
 
 const defaultProducts = [
   {
@@ -38,7 +39,7 @@ function ProdutosAlim() {
 
   const handleEdit = (product) => {
     setEditingProduct(product);
-  };
+  }
 
   const handleAddNew = () => {
     setShowAddModal(true);
@@ -55,17 +56,50 @@ function ProdutosAlim() {
           <Header />
         </div>
       </div>
+      
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold text-[#C0C0C0] mb-4">Lista de Produtos</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {/* Lista de produtos */}
+          <div className="container mx-auto p-10 bg-[#270707] rounded-xl">
+            <div className="flex justify-between items-center mb-6">
+              <h1 className="text-2xl font-bold text-[#C0C0C0]">Lista de Produtos</h1>
+              <button onClick={handleAddNew} className="bg-[#800F0F] hover:bg-red-800 hover:text-black text-white font-semibold rounded-xl px-4 py-2 cursor-pointer">
+                Adicionar Produto
+              </button>
+            </div>
+
+            {showAddModal && (
+              <AddProdutoModal
+                onAdd={(newProduct) => setProducts([...products, newProduct])}
+                onClose={() => setShowAddModal(false)}
+              />
+            )}
+
+            {editingProduct && (
+              <EditProdutoModal
+                product={editingProduct}
+                onUpdate={(updatedProduct) => {
+                  setProducts(products.map(p => p.id === updatedProduct.id ? updatedProduct : p));
+                  setEditingProduct(null);
+                }}
+                onClose={() => setEditingProduct(null)}
+              />
+            )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} onEdit={handleEdit} onDelete={handleDelete} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+ 
+
 
 
 export default ProdutosAlim;
