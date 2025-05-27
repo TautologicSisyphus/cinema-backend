@@ -1,17 +1,22 @@
+import { useDispatch } from 'react-redux';
+import { addItem } from '../Slices/CartSlice';
+import ProdAlimentos from '../Pages/ProdAlimentos';
 
-const addToCart = (product) => {
-    //setCart([...cart, { name: product.name, price: product.price }]);
-    alert(`${product.name} adicionado ao carrinho!`);
-  };
 
 const ProductCard = ({ product, onEdit, onDelete }) => {
+  // Importando o hook useDispatch do Redux para despachar ações
+  const dispatch = useDispatch();
+
+  const addToCart = (product) => {
+    dispatch(addItem({ ...product, quantity: 1 }));
+  };
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg p-4 bg-[#F5F5F5]">
       <img className="w-full h-48 object-cover" src={product.image} alt={product.name} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{product.name}</div>
         <p className="text-gray-700 text-base">{product.description}</p>
-        <p className="text-sm text-gray-500 mt-2">ID: {product.id}</p>
+        {/*<p className="text-sm text-gray-500 mt-2">ID: {product.id}</p>*/}
       </div>
       <div className="px-6 pt-4 pb-2 flex items-center">
         <span className="inline-block bg-black rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">

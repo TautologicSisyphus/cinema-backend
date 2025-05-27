@@ -1,11 +1,8 @@
-
-
 const IngressoCard = ({ ingresso, onEdit, onDelete }) => {
   return (
     <div className="flex flex-row items-center justify-between w-full max-w-3xl rounded-xl shadow-md p-4 bg-[#F5F5F5]">
       <div>
         <h2 className="font-bold text-xl">{ingresso.name}</h2>
-        <p className="text-sm text-gray-500">ID: {ingresso.id}</p>
         <span className="inline-block bg-black rounded-full px-3 py-1 text-sm font-semibold text-white mt-2">
           R${ingresso.price}
         </span>

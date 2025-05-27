@@ -1,22 +1,17 @@
 import { Link } from "react-router-dom"
 import logo from "../assets/logoCineManager.png"
+import Header from '../Components/Header';
 
 function ClientCadastro() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-            {/* Logo */}
-            <div className="mb-8">
-                <Link to="/">
-                    <img
-                        src={logo}
-                        alt="CineManager"
-                        className="w-72 hover:scale-105 transition-transform duration-300"
-                    />
-                </Link>
+            {/* Header */}
+            <div className="fixed top-0 left-0 w-full z-50">
+                <Header />
             </div>
 
             {/* Card de Cadastro */}
-            <div className="w-full max-w-lg bg-[#270707] rounded-2xl shadow-2xl p-10">
+            <div className="w-full max-w-lg bg-[#270707] rounded-2xl shadow-2xl p-10 mt-15">
                 <h3 className="text-3xl font-bold text-center text-[#C0C0C0] mb-8">Cadastrar Cliente</h3>
 
                 <form className="space-y-5">

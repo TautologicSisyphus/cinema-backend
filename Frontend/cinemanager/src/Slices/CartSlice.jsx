@@ -9,7 +9,7 @@ const initialState = {
 // Cria um slice do Redux chamado 'cart' para gerenciar o estado do carrinho de compras
 const cartSlice = createSlice({
     name: 'cart', // Nome do slice
-    initialState, // Estado inicial do carrinho
+    initialState: initialState, // Estado inicial do carrinho
     reducers: {
         // Adiciona um item ao carrinho
         addItem(state, action) {

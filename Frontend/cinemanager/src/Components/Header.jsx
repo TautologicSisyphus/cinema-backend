@@ -1,6 +1,8 @@
 import logo from "../assets/logoCineManager.png"
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import CartIcon from './CartIcon';
+
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -86,7 +88,10 @@ function Header() {
                                 )}
                             </li>
                         </ul>
-
+                        {/* Ícone do carrinho */}
+                        <Link to="/cart">
+                            <CartIcon />
+                        </Link>
                         {/* Botão Registrar-se */}
                         <Link to="/register">
                             <button 
