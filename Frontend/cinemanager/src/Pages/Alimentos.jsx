@@ -57,8 +57,7 @@ function ProdutosAlim() {
         </div>
       </div>
       
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold text-[#C0C0C0] mb-4">Lista de Produtos</h1>
+      <div className="container mx-auto p-4 margin-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Lista de produtos */}
           <div className="container mx-auto p-10 bg-[#270707] rounded-xl">
@@ -87,14 +86,15 @@ function ProdutosAlim() {
               />
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} onEdit={handleEdit} onDelete={handleDelete} />
               ))}
             </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
