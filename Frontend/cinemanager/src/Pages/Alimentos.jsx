@@ -1,14 +1,10 @@
-import React from 'react';
 import ProductCard from '../Components/Product';
 import { Link } from "react-router-dom";
 import logo from "../assets/logoCineManager.png"
 import Header from '../Components/Header';
-//import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
 
-
-
-
-const products = [
+const defaultProducts = [
   {
     id: 1,
     name: 'Pipoca Grande',
@@ -33,40 +29,43 @@ const products = [
     image: 'https://images.pexels.com/photos/4960237/pexels-photo-4960237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     // Créditos: https://www.pexels.com/photo/a-person-holding-a-bag-of-chips-4960237/
   },
-  // Adicione mais produtos conforme necessário
 ];
 
-const ProdutosAlim = () => {
-    return (
-        <div className="min-h-screen flex flex-col items-center pt-40">
-            <div className="flex justify-center mb-12">
-                <Link to="/">
-                    <img src={logo} alt="CineManager" className="w-72 hover:scale-105 transition-all" />
-                </Link>
-            </div>
-            <div className="container mx-auto p-4">
-                <h1 className="text-2xl font-bold text-[#C0C0C0] mb-4">Lista de Produtos</h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
+function ProdutosAlim() {
+  const [products, setProducts] = useState(defaultProducts);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null); 
+
+  const handleEdit = (product) => {
+    setEditingProduct(product);
+  };
+
+  const handleAddNew = () => {
+    setShowAddModal(true);
+  };
+
+  const handleDelete = (id) => {
+    setProducts(products.filter(p => p.id !== id));
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center pt-40">
+      <div className="flex justify-center mb-12">
+        <div className="fixed top-0 left-0 w-full z-50">
           <Header />
         </div>
-        <div className="max-w-lg w-full p-8 bg-[#270707] rounded-xl shadow-md mb-8">
-          <h1 className="text-2xl font-bold text-[#C0C0C0] mb-4 text-center">Lista de Produtos</h1>
-        </div>
-        <div className="container mx-auto p-4">
-        
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      </div>
+      <div className="container mx-auto p-4">
+        <h1 className="text-2xl font-bold text-[#C0C0C0] mb-4">Lista de Produtos</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-        </div>
       </div>
-    );
-};
+    </div>
+  );
+}
 
 
 export default ProdutosAlim;
