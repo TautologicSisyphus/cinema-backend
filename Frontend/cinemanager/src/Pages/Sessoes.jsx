@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/logoCineManager.png"
-import Header from '../Components/Header';
 
 function Sessoes() {
     const [sessaoSelecionada, setSessaoSelecionada] = useState(false);
