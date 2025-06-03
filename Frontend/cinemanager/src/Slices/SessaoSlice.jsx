@@ -11,7 +11,7 @@ const initialState = SessaoAdapter.getInitialState({
 
 // Async Thunks
 export const fetchSessoes = createAsyncThunk(
-  'Sessoes/fetchSessoes',
+  'sessoes/fetchSessoes',
   async () => {
     const response = await fetch('http://localhost:3001/sessoes');
     return await response.json();

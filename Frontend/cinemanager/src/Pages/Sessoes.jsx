@@ -17,9 +17,6 @@ import SessaoCard from '../Components/SessaoCard';
 
 const Sessoes = () => {
     const [sessaoSelecionada, setSessaoSelecionada] = useState(false);
-  
-    
-
     const dispatch = useDispatch();
     const sessoes = useSelector(selectAllSessoes);
     const status = useSelector((state) => state.sessoes.status);
@@ -63,44 +60,50 @@ const Sessoes = () => {
     
     return (
         <div className="min-h-screen flex flex-col items-center pt-40">
-          <div className="flex justify-center mb-12">
+            <div className="flex justify-center mb-12">
                   <Link to="/">
                       <img src={logo} alt="CineManager" className="w-72 hover:scale-105 transition-all" />
                   </Link>
             </div>
-            <div className="max-w-lg w-full p-8 bg-[#270707] rounded-xl shadow-md">
-                <div className="flex justify-between items-center mb-6">
-                    <h1 className="text-2xl font-bold text-[#C0C0C0]">Lista de Sessoes Disponíveis</h1>
-                    <button
-                        onClick={() => setShowAddModal(true)}
-                        className="bg-[#800F0F] hover:bg-red-800 hover:text-black text-white font-semibold rounded-xl px-4 py-2 cursor-pointer"
-                    >
-                        Adicionar Sessoes
-                    </button>
+
+            <div className="flex flex-row gap-10">
+                <div className="max-w-lg w-full p-8 bg-[#270707] rounded-xl shadow-md">
+                    <div className="flex justify-between items-center mb-6">
+                        <h1 className="text-2xl font-bold text-[#C0C0C0]">Lista de Sessoes Disponíveis</h1>
+                        <button
+                            onClick={() => setShowAddModal(true)}
+                            className="bg-[#800F0F] hover:bg-red-800 hover:text-black text-white font-semibold rounded-xl px-4 py-2 cursor-pointer"
+                        >
+                            Adicionar sessões
+                        </button>
+                    </div>
+
+                    {showAddModal && (
+                        <AddSessaoModal onAdd={handleAddNew} onClose={() => setShowAddModal(false)} />
+                    )}
+
+                    {editingSessao && (
+                        <EditSessaoModal
+                            sessao={editingSessao}
+                            onUpdate={handleUpdate}
+                            onClose={() => setEditingSessao(null)}
+                        />
+                    )}
+
+                    <div className="flex flex-col gap-4 items-center">
+                    {sessoes.map((sessao) => (
+                        
+                        <SessaoCard
+                            key={sessao.id}
+                            sessao={sessao}
+                            onEdit={handleEdit}
+                            onDelete={handleDelete}
+                        />
+                           
+                    ))}                    
+                    </div>
                 </div>
-
-                {showAddModal && (
-                    <AddSessaoModal onAdd={handleAddNew} onClose={() => setShowAddModal(false)} />
-                )}
-
-                {editingSessao && (
-                    <EditSessaoModal
-                        sessao={editingSessao}
-                        onUpdate={handleUpdate}
-                        onClose={() => setEditingSessao(null)}
-                    />
-                )}
-
-                <div className="flex flex-col gap-4 items-center">
-                {sessoes.map((sessao) => (
-                    <SessaoCard
-                        key={sessao.id}
-                        sessao={sessao}
-                        onEdit={handleEdit}
-                        onDelete={handleDelete}
-                    />
-                ))}
-                </div>
+                
             </div>
         </div>
       );
