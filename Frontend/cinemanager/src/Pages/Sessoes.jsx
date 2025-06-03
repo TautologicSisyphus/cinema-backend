@@ -92,51 +92,18 @@ const Sessoes = () => {
 
                     <div className="flex flex-col gap-4 items-center">
                     {sessoes.map((sessao) => (
+                        
                         <SessaoCard
                             key={sessao.id}
                             sessao={sessao}
                             onEdit={handleEdit}
                             onDelete={handleDelete}
                         />
-                    ))}
+                           
+                    ))}                    
                     </div>
                 </div>
-                <div className="max-w-lg w-full p-8 bg-[#270707] rounded-xl shadow-md"> 
-                    <div className="mb-10 text-center">
-                        <h3 className="text-4xl font-bold text-[#C0C0C0]">Selecione uma Sessão</h3>
-                    </div>
-                    <ul className="space-y-2">
-                        {sessoes.map((sessao) => (
-                        <li
-                            key={sessao.id}
-                            onClick={() => selecionarSessao(sessao.id)}
-                            className={`p-4 border rounded-lg cursor-pointer ${
-                            sessaoSelecionada === sessao.id
-                                ? "bg-blue-500 text-white"
-                                : "bg-white hover:bg-gray-100"
-                            }`}
-                        >   
-                            <div className="flex justify-between items-center">
-                                <div className="flex flex-col">
-                                    <div className="font-semibold">{sessao.filme}</div>
-                                    <div className="text-sm text-gray-600">{sessao.horario}</div>
-                                </div>
-                                <Link to="/selecao-assentos" state={{ 
-                                    sessao: {
-                                        filme: sessao.filme,
-                                        id: sessao.id,
-                                        horario: sessao.horario
-                                    }
-                                }}>
-                                    <button className="bg-[#800F0F] hover:bg-red-800 text-white hover:text-black font-semibold py-1 px-4 rounded-xl cursor-pointer">
-                                        Comprar ingresso
-                                    </button>
-                                </Link>
-                            </div>
-                        </li>
-                        ))}
-                    </ul>
-                </div>
+                
             </div>
         </div>
       );
