@@ -15,17 +15,7 @@ const SessaoCard = ({ sessao, onEdit, onDelete }) => {
           Editar
         </button>
       </div>
-      <Link to="/selecao-assentos" state={{ 
-            sessao: {
-                filme: sessao.filme,
-                id: sessao.id,
-                horario: sessao.horario
-            }
-        }}>
-        <button className="bg-[#800F0F] hover:bg-red-800 text-white hover:text-black font-semibold py-1 px-4 rounded-xl cursor-pointer">
-            Comprar ingresso
-        </button>
-      </Link>
+      
       <div className="flex items-center gap-3">
         <button 
           onClick={() => onDelete(sessao.id)} 
