@@ -78,12 +78,6 @@ function Header() {
                                             Lista de clientes
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link to="/cliente-compras" className="block px-4 py-2 text-sm text-[#C0C0C0] hover:bg-[#4a2a2a]
-                                            hover:text-black">
-                                            Atendimento ao cliente
-                                            </Link>
-                                        </li>
                                     </ul>
                                 )}
                             </li>

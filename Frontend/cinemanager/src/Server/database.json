@@ -36,7 +36,7 @@
       "id": "3",
       "filme": "Gravity",
       "horario": "20:30"
-    }    
+    }
   ],
   "products": [
     {
@@ -59,6 +59,22 @@
       "description": "Nachos crocantes com molho especial.",
       "price": 13.99,
       "image": "https://images.pexels.com/photos/4960237/pexels-photo-4960237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    }
+  ],
+  "clients": [
+    {
+      "id": "b869",
+      "nome": "Ana Maria",
+      "cpf": "789456123-96",
+      "email": "asdassda@hotmail.com",
+      "nascimento": "2002-06-27"
+    },
+    {
+      "id": "da72",
+      "nome": "João da Silva",
+      "cpf": "321456951-63",
+      "email": "joao@gmail.com",
+      "nascimento": "1999-10-17"
     }
   ]
 }

@@ -17,8 +17,11 @@ const cartSlice = createSlice({
             // Verifica se o item já existe no carrinho
             const existingItem = state.items.find(i => i.id === item.id);
             // Atualiza a quantidade total e o preço total do carrinho
+            const itemTotalCents = Math.round(item.price * 100) * item.quantity;
+
             state.totalQuantity += item.quantity;
-            state.totalPrice += item.price * item.quantity;
+            state.totalPrice += itemTotalCents;
+
             if (existingItem) {
                 // Se o item já existe, apenas incrementa a quantidade
                 existingItem.quantity += item.quantity;
@@ -33,9 +36,10 @@ const cartSlice = createSlice({
             // Procura o item existente no carrinho
             const existingItem = state.items.find(i => i.id === id);
             if (existingItem) {
+                const itemTotalCents = Math.round(existingItem.price * 100) * existingItem.quantity;
                 // Atualiza a quantidade total e o preço total do carrinho
                 state.totalQuantity -= existingItem.quantity;
-                state.totalPrice -= existingItem.price * existingItem.quantity;
+                state.totalPrice -= itemTotalCents;
                 // Remove o item do array de itens
                 state.items = state.items.filter(i => i.id !== id);
             }

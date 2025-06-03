@@ -5,11 +5,11 @@ const AddIngressoModal = ({ onAdd, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newProduct = {
+    const newIngresso = {
       ...form,
       price: parseFloat(form.price),
     };
-    onAdd(newProduct);
+    onAdd(newIngresso);
     onClose();
   };
 
