@@ -27,7 +27,7 @@ const Cart = () => {
                   <div className="flex items-center gap-2">
                     <span className="text-[#C0C0C0]">R${(item.price * item.quantity).toFixed(2)}</span>
                     <button
-                      className="bg-red-700 text-white px-2 py-1 rounded hover:bg-red-900"
+                      className="bg-red-700 text-white px-2 py-1 rounded hover:bg-red-900 cursor-pointer"
                       onClick={() => dispatch(removeItem(item.id))}
                     >
                       Remover
@@ -38,10 +38,10 @@ const Cart = () => {
             </ul>
             <div className="flex justify-between items-center text-[#C0C0C0] font-bold mb-4">
               <span>Total de itens: {totalQuantity}</span>
-              <span>Total: R${totalPrice.toFixed(2)}</span>
+              <span>Total: R${(totalPrice / 100).toFixed(2)}</span>
             </div>
             <button
-              className="w-full bg-[#800F0F] hover:bg-red-800 text-white font-semibold py-2 px-4 rounded"
+              className="w-full bg-[#800F0F] hover:bg-red-800 text-white font-semibold py-2 px-4 rounded cursor-pointer"
               onClick={() => dispatch(clearCart())}
             >
               Limpar Carrinho

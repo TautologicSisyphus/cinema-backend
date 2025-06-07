@@ -11,7 +11,7 @@ const initialState = SessaoAdapter.getInitialState({
 
 // Async Thunks
 export const fetchSessoes = createAsyncThunk(
-  'Sessoes/fetchSessoes',
+  'sessoes/fetchSessoes',
   async () => {
     const response = await fetch('http://localhost:3001/sessoes');
     return await response.json();
@@ -60,7 +60,7 @@ const sessaoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchSessoes.fulfilled, (state, action) => {
-        sessoesAdapter.setAll(state, action.payload);
+        SessaoAdapter.setAll(state, action.payload);
         state.status = 'succeeded';
       })
       .addCase(fetchSessoes.pending, (state) => {
@@ -71,10 +71,10 @@ const sessaoSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addSessao.fulfilled, (state, action) => {
-        sessoesAdapter.addOne(state, action.payload);
+        SessaoAdapter.addOne(state, action.payload);
       })
       .addCase(deleteSessao.fulfilled, (state, action) => {
-        sessoesAdapter.removeOne(state, action.payload);
+        SessaoAdapter.removeOne(state, action.payload);
       });
   },
 });

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SessaoCard = ({ sessao, onEdit, onDelete }) => {
   return (
     <div className="flex flex-row items-center justify-between w-full max-w-3xl rounded-xl shadow-md p-4 bg-[#F5F5F5]">
@@ -13,7 +15,17 @@ const SessaoCard = ({ sessao, onEdit, onDelete }) => {
           Editar
         </button>
       </div>
-
+      <Link to="/selecao-assentos" state={{ 
+            sessao: {
+                filme: sessao.filme,
+                id: sessao.id,
+                horario: sessao.horario
+            }
+        }}>
+        <button className="bg-[#800F0F] hover:bg-red-800 text-white hover:text-black font-semibold py-1 px-4 rounded-xl cursor-pointer">
+            Comprar ingresso
+        </button>
+      </Link>
       <div className="flex items-center gap-3">
         <button 
           onClick={() => onDelete(sessao.id)} 
@@ -22,6 +34,7 @@ const SessaoCard = ({ sessao, onEdit, onDelete }) => {
           <i className='bx bx-trash bx-tada-hover'></i>
         </button>
       </div>
+      
     </div>
   );
 };
