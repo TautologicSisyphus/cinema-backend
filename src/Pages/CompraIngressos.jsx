@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectAllIngressos } from "../Slices/IngressoSlice"; 
+import {
+  fetchIngressos,
+  selectAllIngressos
+} from '../Slices/IngressoSlice';
+
 import { useDispatch } from "react-redux";
 import { addItem } from "../Slices/CartSlice";
 
 export default function CompraIngressos() {
   const location = useLocation();
-  const { quantidade = 0, assentos = [] } = location.state || {};
+  const { quantidade, assentos } = location.state || {quantidade: 0, assentos: [] };
+  
 
   // Pega todos os ingressos do estado global
+  const status = useSelector((state) => state.ingressos.status);
+  
   const ingressos = useSelector(selectAllIngressos);
   const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchIngressos());
+    }
+  }, [status, dispatch]);
 
   const [quantidades, setQuantidades] = useState({});
 
@@ -65,6 +79,7 @@ export default function CompraIngressos() {
       </p>
 
       <div className="space-y-4">
+        
         {ingressos.map((ingresso) => (
           <div key={ingresso.id} className="flex items-center justify-between">
             <label className="text-lg text-[#C0C0C0]">

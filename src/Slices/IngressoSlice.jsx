@@ -85,3 +85,5 @@ export const {
 } = ingressosAdapter.getSelectors((state) => state.ingressos);
 
 export default ingressoSlice.reducer;
+
+
