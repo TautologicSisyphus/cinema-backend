@@ -34,9 +34,35 @@ router.get('/', (req, res) => {
 // POST /sessoes
 router.post('/', (req, res) => {
   const newSessao = req.body;
-  newSessao.id = Date.now();
+  newSessao.id = String(Date.now());
   sessoes.push(newSessao);
   res.status(201).json(newSessao);
+});
+
+// PUT /sessoes/:id
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const index = sessoes.findIndex(s => s.id == id);
+
+  if (index !== -1) {
+    sessoes[index] = { ...sessoes[index], ...req.body };
+    res.json(sessoes[index]);
+  } else {
+    res.status(404).json({ error: 'Sessão não encontrada' });
+  }
+});
+
+// DELETE /sessoes/:id
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  const index = sessoes.findIndex(s => s.id == id);
+
+  if (index !== -1) {
+    sessoes.splice(index, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).json({ error: 'Sessão não encontrada' });
+  }
 });
 
 module.exports = router;

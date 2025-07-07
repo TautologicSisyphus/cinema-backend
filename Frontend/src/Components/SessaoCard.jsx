@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 const SessaoCard = ({ sessao, onEdit, onDelete }) => {
   return (

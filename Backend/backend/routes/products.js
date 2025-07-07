@@ -33,9 +33,35 @@ router.get('/', (req, res) => {
 // POST /products
 router.post('/', (req, res) => {
   const newProduct = req.body;
-  newProduct.id = Date.now();
+  newProduct.id = String(Date.now());
   products.push(newProduct);
   res.status(201).json(newProduct);
+});
+
+// PUT /products/:id
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const index = products.findIndex(p => p.id == id);
+
+  if (index !== -1) {
+    products[index] = { ...products[index], ...req.body };
+    res.json(products[index]);
+  } else {
+    res.status(404).json({ error: 'Produto não encontrado' });
+  }
+});
+
+// DELETE /products/:id
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  const index = products.findIndex(p => p.id == id);
+
+  if (index !== -1) {
+    products.splice(index, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).json({ error: 'Produto não encontrado' });
+  }
 });
 
 module.exports = router;

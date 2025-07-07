@@ -32,9 +32,35 @@ router.get('/', (req, res) => {
 // POST /ingressos
 router.post('/', (req, res) => {
   const newIngresso = req.body;
-  newIngresso.id = Date.now();
+  newIngresso.id = String(Date.now());
   ingressos.push(newIngresso);
   res.status(201).json(newIngresso);
+});
+
+// PUT /ingressos/:id
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const index = ingressos.findIndex(ing => ing.id == id); 
+
+  if (index !== -1) {
+    ingressos[index] = { ...ingressos[index], ...req.body };
+    res.json(ingressos[index]);
+  } else {
+    res.status(404).json({ error: 'Ingresso não encontrado' });
+  }
+});
+
+// DELETE /ingressos/:id
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  const index = ingressos.findIndex(ing => ing.id == id);
+
+  if (index !== -1) {
+    ingressos.splice(index, 1);
+    res.status(204).send(); // sucesso sem corpo
+  } else {
+    res.status(404).json({ error: 'Ingresso não encontrado' });
+  }
 });
 
 module.exports = router;
