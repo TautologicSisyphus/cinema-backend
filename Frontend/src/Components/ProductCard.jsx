@@ -1,7 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { addItem } from '../Slices/CartSlice';
-import ProdAlimentos from '../Pages/ProdAlimentos';
-
 
 const ProductCard = ({ product, onEdit, onDelete }) => {
   // Importando o hook useDispatch do Redux para despachar ações
