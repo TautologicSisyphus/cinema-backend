@@ -1,67 +1,73 @@
 const express = require('express');
 const router = express.Router();
-
-let products = [
- {
-      "id": "1",
-      "name": "Pipoca Grande",
-      "description": "Pipoca grande, perfeita para dividir.",
-      "price": 19.99,
-      "image": "https://images.pexels.com/photos/5112444/pexels-photo-5112444.jpeg"
-    },
-    {
-      "id": "2",
-      "name": "Refrigerante 500ml",
-      "description": "Refrigerante gelado para acompanhar seu filme.",
-      "price": 8.49,
-      "image": "https://images.pexels.com/photos/5332073/pexels-photo-5332073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    },
-    {
-      "id": "3",
-      "name": "Combo Nachos",
-      "description": "Nachos crocantes com molho especial.",
-      "price": 13.99,
-      "image": "https://images.pexels.com/photos/4960237/pexels-photo-4960237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    }
-];
+const Produto = require('../models/produtos'); // Importa o modelo de Sessão
 
 // GET /products
 router.get('/', (req, res) => {
-  res.json(products);
+  Produto.find({})
+    .then(produtos => {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(produtos);
+      console.log('Produtos encontrados:', produtos);
+    })
+    .catch(err => {
+      console.error('Erro ao buscar produtos:', err);
+      res.status(500).json({ error: err.message });
+    });
 });
 
 // POST /products
 router.post('/', (req, res) => {
-  const newProduct = req.body;
-  newProduct.id = String(Date.now());
-  products.push(newProduct);
-  res.status(201).json(newProduct);
+  Produto.create(req.body)
+    .then(produto => {
+      res.status(201).json(produto);
+      console.log('Produto criado:', produto);
+    })
+    .catch(err => {
+      res.status(400).json({ error: err.message });
+    });
 });
 
 // PUT /products/:id
 router.put('/:id', (req, res) => {
   const id = req.params.id;
-  const index = products.findIndex(p => p.id == id);
 
-  if (index !== -1) {
-    products[index] = { ...products[index], ...req.body };
-    res.json(products[index]);
-  } else {
-    res.status(404).json({ error: 'Produto não encontrado' });
-  }
+  Produto.findOneAndUpdate(
+    { id: id },
+    req.body,
+    { new: true, runValidators: true }
+  )
+    .then(produto => {
+      if (produto) {
+        res.json(produto);
+        console.log('Produto atualizado:', produto);
+      } else {
+        res.status(404).json({ error: 'Produto não encontrado' });
+      }
+    })
+    .catch(err => {
+      res.status(400).json({ error: err.message });
+    });
 });
 
 // DELETE /products/:id
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
-  const index = products.findIndex(p => p.id == id);
 
-  if (index !== -1) {
-    products.splice(index, 1);
-    res.status(204).send();
-  } else {
-    res.status(404).json({ error: 'Produto não encontrado' });
-  }
+  Produto.findOneAndDelete({ id: id })
+    .then(produto => {
+      if (produto) {
+        res.status(204).send();
+        console.log('Produto removido:', produto);
+      } else {
+        res.status(404).json({ error: 'Produto não encontrado' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 module.exports = router;
+
