@@ -1,68 +1,72 @@
 const express = require('express');
 const router = express.Router();
-
-let sessoes = [
- {
-      "id": "1",
-      "filme": "John Wick",
-      "horario": "20:00"
-    },
-    {
-      "id": "2",
-      "filme": "Ad Astra",
-      "horario": "21:00"
-    },
-    {
-      "id": "3",
-      "filme": "Gravity",
-      "horario": "20:30"
-    },
-    {
-      "id": "4",
-      "name": "",
-      "price": null,
-      "filme": "Toy story",
-      "horario": "23.00"
-    }
-];
+const Sessao = require('../models/sessoes'); // Importa o modelo de Sessão
 
 // GET /sessoes
 router.get('/', (req, res) => {
-  res.json(sessoes);
+  Sessao.find({})
+    .then(sessoes => {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(sessoes);
+      console.log('Sessões encontradas:', sessoes);
+    })
+    .catch(err => {
+      console.error('Erro ao buscar sessões:', err);
+      res.status(500).json({ error: err.message });
+    });
 });
 
 // POST /sessoes
 router.post('/', (req, res) => {
-  const newSessao = req.body;
-  newSessao.id = String(Date.now());
-  sessoes.push(newSessao);
-  res.status(201).json(newSessao);
+  Sessao.create(req.body)
+    .then(sessao => {
+      res.status(201).json(sessao);
+      console.log('Sessão criada:', sessao);
+    })
+    .catch(err => {
+      res.status(400).json({ error: err.message });
+    });
 });
 
 // PUT /sessoes/:id
 router.put('/:id', (req, res) => {
   const id = req.params.id;
-  const index = sessoes.findIndex(s => s.id == id);
-
-  if (index !== -1) {
-    sessoes[index] = { ...sessoes[index], ...req.body };
-    res.json(sessoes[index]);
-  } else {
-    res.status(404).json({ error: 'Sessão não encontrada' });
-  }
+  
+  Sessao.findOneAndUpdate(
+    { id: id }, 
+    req.body, 
+    { new: true, runValidators: true }
+  )
+    .then(sessao => {
+      if (sessao) {
+        res.json(sessao);
+        console.log('Sessão atualizada:', sessao);
+      } else {
+        res.status(404).json({ error: 'Sessão não encontrada' });
+      }
+    })
+    .catch(err => {
+      res.status(400).json({ error: err.message });
+    });
 });
 
 // DELETE /sessoes/:id
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
-  const index = sessoes.findIndex(s => s.id == id);
-
-  if (index !== -1) {
-    sessoes.splice(index, 1);
-    res.status(204).send();
-  } else {
-    res.status(404).json({ error: 'Sessão não encontrada' });
-  }
+  
+  Sessao.findOneAndDelete({ id: id })
+    .then(sessao => {
+      if (sessao) {
+        res.status(204).send();
+        console.log('Sessão removida:', sessao);
+      } else {
+        res.status(404).json({ error: 'Sessão não encontrada' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 module.exports = router;
