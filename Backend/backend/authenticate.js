@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
     const { username, password } = req.body;
 
     // procurar usuário no banco
-    const user = await Func.findOne({ username });
+    const user = await Func.findOne({ username: username });
     if (!user) {
       return res.status(400).json({ msg: 'Usuário não encontrado' });
     }
