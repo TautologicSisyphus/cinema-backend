@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Produto = require('../models/produtos'); // Importa o modelo de Sessão
+const passport = require('passport');
 
 // GET /products
 router.get('/', (req, res) => {

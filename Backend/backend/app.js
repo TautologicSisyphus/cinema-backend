@@ -3,6 +3,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var auth = require('./authenticate');
+var passport = require('passport');
+require('./config/passport')(passport);
+var passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -11,6 +15,9 @@ var ingressosRouter = require('./routes/ingressos');
 var sessoesRouter = require('./routes/sessoes');
 
 var app = express();
+
+app.use('/authenticate', auth);
+app.use(passport.initialize());
 
 const mongoose = require('mongoose'); 
 const url = 'mongodb://localhost:27017/cinema_db'

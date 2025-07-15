@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Sessao = require('../models/sessoes'); // Importa o modelo de Sessão
+const passport = require('passport');
 
 // GET /sessoes
 router.get('/', (req, res) => {

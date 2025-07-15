@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Ingresso = require('../models/ingressos'); // Importa o modelo de Ingresso
+const passport = require('passport');
 
 // GET /ingressos
 router.get('/', (req, res) => {
